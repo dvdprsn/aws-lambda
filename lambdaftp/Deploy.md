@@ -1,5 +1,7 @@
 ## lambda FTP
+
 - Set region to CA-Central
+
 1. Navigate to AWS Lambda console page
 2. Click `Create function`
 3. Function name -> `lambdaftp`
@@ -7,14 +9,12 @@
 5. Click `Create function`
 6. Click `Add trigger`
 7. Select `API Gateway`
-	- Create a new API
-	- HTTP API
-	- Security Open
-8. Navigate to AWS IAM
-9. Select `Roles`
-10. Select `lambdaftp-role-[id]`
-11. Select the policy name and edit the JSON
-12. Paste IAM.json contents and save
-13. Navigate back to Lambda and select lambdaftp
-14. Select `code` -> Upload from -> `.zip file`
-15. Deploy
+   - Create a new API
+   - HTTP API
+   - Security Open
+8. Configuration -> Permissions -> Click the execution role
+9. Add permissions -> attach policies -> add`AmazonS3FullAccess`
+10. Back in the lambda function select `code` -> Upload from -> `.zip file`
+11. Deploy
+
+Trigger function with -> `https://[API Gateway]/default/lambdaftp?Bucket=[bucket name]&filename=[file name]`
