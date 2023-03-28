@@ -62,10 +62,6 @@ def handler(event, context):
             s3.copy_object(CopySource=src, Bucket=subs[item], Key=key)
         except Exception as e:
             print(e)
-            return {
-                'statusCode': 500,
-                'body': 'Error: Failed to copy object to destination bucket'
-            }
 
     return {
         'statusCode': 200,
