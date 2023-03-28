@@ -27,6 +27,7 @@ def lambda_handler(event, context):
         'body': ret,
         'isBase64Encoded': True,
         'headers': {
-            'Content-Type': response['ContentType']
+            'Content-Type': response['ContentType'],
+            'Content-Disposition': 'attachment; filename=' + filename
         }
     }

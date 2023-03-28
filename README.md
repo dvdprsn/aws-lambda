@@ -6,6 +6,23 @@ David Pearson
 
 dpears04@uoguelph.ca
 
+# How it works
+
+## LambdaFTP
+
+- Very simple function that gets the request from HTTP query string
+- Attempts a get_object call based on the string provided
+- If file is found the file is returned to the browser as a download
+
+## Subscribe
+
+- Based on the event that triggers the function it will get the bucket name, and file name
+- It will then get the list of all subscribers and update the log file indicating which file was uploaded
+- It will iterate over the list of subscribers attempting to S3 copy the file into each bucket
+- If one of these copies fails it will report to CloudWatch and proceed.
+
+# Deploy instructions
+
 ## lambda FTP
 
 - Assumes a valid bucket has been created for FTP
@@ -49,7 +66,7 @@ Trigger function with -> `https://[API Gateway]/default/lambdaftp?Bucket=[bucket
 4. `Configuration` -> `Permissions` -> Click execution role
 5. `Add permissions` -> `Attach policies` -> `AmazonS3FullAccess` -> save
 
-## Assumptions/Limitations
+# Assumptions/Limitations
 
 - All buckets as specified in the instructions must be created (FTP bucket, distribution bucket & related user buckets)
   - For Subscribe this all requires the provided files have been uploaded to the distribution bucket
