@@ -2,10 +2,6 @@
 
 David Pearson
 
-1050197
-
-dpears04@uoguelph.ca
-
 # How it works
 
 ## LambdaFTP
